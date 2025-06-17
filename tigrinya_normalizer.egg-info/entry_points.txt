@@ -1,2 +1,3 @@
 [console_scripts]
+tigrinya-dictgen = tigrinya_normalizer.cli_dictgen:main
 tigrinya-normalize = tigrinya_normalizer.cli:main

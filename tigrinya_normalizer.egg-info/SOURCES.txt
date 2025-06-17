@@ -1,3 +1,4 @@
+LICENSE
 README.md
 setup.py
 tests/__init__.py
@@ -7,6 +8,8 @@ tests/test_unit_normalizer.py
 tests/test_utils.py
 tigrinya_normalizer/__init__.py
 tigrinya_normalizer/cli.py
+tigrinya_normalizer/cli_dictgen.py
+tigrinya_normalizer/dictionary_generator.py
 tigrinya_normalizer/normalizer.py
 tigrinya_normalizer/utils.py
 tigrinya_normalizer.egg-info/PKG-INFO

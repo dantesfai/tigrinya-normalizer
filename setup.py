@@ -31,6 +31,7 @@ setup(
     entry_points={
         'console_scripts': [
             'tigrinya-normalize = tigrinya_normalizer.cli:main',
+            'tigrinya-dictgen = tigrinya_normalizer.cli_dictgen:main',
         ],
     },
 

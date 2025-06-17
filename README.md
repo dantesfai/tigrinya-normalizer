@@ -105,7 +105,56 @@ The normalizer uses dictionaries located in the dictionaries/ folder for:
 
 You can extend or customize these dictionaries to improve normalization accuracy.
 
-### Testing
+## Tigrinya Dictionary Generator
+
+This module is part of the `tigrinya_normalizer` package and is responsible for generating normalization dictionaries from raw Tigrinya text. These dictionaries are used to normalize clitics, hyphenated words, shortened forms, and other non-standard variations.
+
+### Features
+
+- Extracts and normalizes:
+  - Clitic contractions (e.g., ተዳልዩ'ዩ → ተዳልዩ ኢዩ)
+  - Forward-slash contractions (e.g., ቤ/ት → ቤት ትምህርቲ)
+  - Dotted abbreviations (e.g., ኤ.ኤ.ም → ኤኤም)
+  - Hyphenated forms (e.g., ስነጥበብ ስነ-ጥበብ → ስነ ጥበብ )
+- Generates multiple dictionary files in JSON format
+- Supports CLI usage for batch processing
+
+---
+
+###  Manual Corrections
+
+After dictionary generation, the following files have undergone **manual correction** to improve accuracy:
+
+- `clitic_dict.txt`
+- `words_with_fwd_slash.txt`
+- `words_with_dots.txt`
+- `clitic_bind_dic.txt`
+- `cliticize_improper_words.txt`
+
+These changes include:
+
+- Fixing incorrect automatic splits or mappings
+- Removing irrelevant or noisy entries
+- Expanding manually verified abbreviations
+
+###  Important
+
+Please **do not overwrite these files** without reviewing them. If you regenerate dictionaries using the CLI:
+
+1. Backup the current dictionary files.
+2. Use a file comparison tool (e.g., `diff`, `meld`, or VSCode's diff viewer) to inspect changes.
+3. Apply previous manual corrections again as needed.
+
+---
+
+### Installation
+
+```bash
+pip install .
+```
+
+
+## Testing
 You can run all tests using pytest from the root directory:
 
 ```bash

@@ -12,6 +12,7 @@ Classifier: Natural Language :: Tigrinya
 Classifier: Topic :: Text Processing :: Linguistic
 Requires-Python: >=3.6
 Description-Content-Type: text/markdown
+License-File: LICENSE
 Requires-Dist: regex
 Requires-Dist: numpy
 Requires-Dist: ujson
@@ -26,6 +27,7 @@ Dynamic: classifier
 Dynamic: description
 Dynamic: description-content-type
 Dynamic: home-page
+Dynamic: license-file
 Dynamic: provides-extra
 Dynamic: requires-dist
 Dynamic: requires-python
@@ -77,16 +79,16 @@ from tigrinya_normalizer.normalizer import TigrinyaNormalizer
 
 normalizer = TigrinyaNormalizer(dataset_file="path/to/input.txt")
 
-normalized_text = normalizer.normalize("ትግርኛ ጽሑፍ ለማንማት")
+normalized_text = normalizer.normalize("ቛንቋ ትግርኛ")
 print(normalized_text)
 ```
-### Using CLI
+### As a CLI Tool
 
 ```bash
 python cli.py -i path/to/input.txt -o normalized_output.txt
 ```
 
-Options:
+CLI Options:
 
 | Argument               | Description                              | Default                 |
 | ---------------------- | ---------------------------------------- | ----------------------- |
@@ -95,22 +97,34 @@ Options:
 | `-p` / `--punctuation` | Punctuation marks to preserve (optional) | None                    |
 
 
-Example preserving punctuation marks ።፣ ፧, or ፣ 
+### Example: Preserve Punctuation
+
 ```bash
-python cli.py -i input.txt -o output.txt -p "።፧"
+python cli.py -i input.txt -o output.txt -p "።፧?"
 ```
 
 ### Project Structure
+```
+tigrinya-normalizer/
+├── tigrinya_normalizer/
+│   ├── __init__.py
+│   ├── normalizer.py          # Main normalization logic
+│   ├── utils.py               # Utility functions
+│   ├── dictionaries/          # Clitic/abbreviation mappings
+│   └── data/
+│       └── tigrinya_cleaned_sentences.txt
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── test_unit_normalizer.py
+│   ├── test_integration_normalizer.py
+│   └── test_utils.py
+├── cli.py                     # Command-line interface
+├── requirements.txt           # Project dependencies
+├── setup.py                   # Packaging configuration
+└── README.md                  # Project documentation
 
-tigrinya_normalizer/
-├── __init__.py
-├── normalizer.py         # Main normalization logic
-├── utils.py              # Utility functions for text processing
-├── cli.py                # Command-line interface entrypoint
-requirements.txt          # Project dependencies
-setup.py                  # Installation and packaging config
-README.md                 # Project documentation
-
+```
 
 ### Dictionaries
 
@@ -126,7 +140,42 @@ The normalizer uses dictionaries located in the dictionaries/ folder for:
 
 You can extend or customize these dictionaries to improve normalization accuracy.
 
-### Testing
+## Dictionary Generator
+
+The `TiDictionary` class (in `tigrinya_normalizer/dictionary_generator.py`) can be used to generate Tigrinya-specific linguistic dictionaries from raw text input.
+
+Example usage:
+
+```python
+from tigrinya_normalizer.dictionary_builder import TiDictionary
+
+input_file = "data/output/Tigrinya_dataset.txt"
+output_dir = "data/dictionary"
+
+ti_dict = TiDictionary(input_file, output_dir)
+ti_dict.create_dictionary("clitic_dict.txt", "words_with_fwd_slash.txt", "words_with_dots.txt")
+ti_dict.create_improper_clitic()
+ti_dict.write_clitic_dict(ti_dict.clitic_zipped_dict)
+```
+
+### CLI: Dictionary Generation
+
+Run the dictionary generator via command line:
+
+```bash
+tigrinya-dictgen --input data/input.txt --output data/dictionary
+```
+Options:
+```
+
+- --clitic = Existing clitic dictionary file
+
+- --slash = Existing fwd slash dictionary file
+
+- --dots = Existing dot-based dictionary file
+```
+
+## Testing
 You can run all tests using pytest from the root directory:
 
 ```bash
@@ -139,7 +188,7 @@ pytest
 ```
 <code>pytest</code> will discover the tests in the tests/ folder automatically.
 
-** Example ** conftest.py
+### Example conftest.py
 
 If you want to share fixtures or setup/teardown logic between your test files, place them in tests/conftest.py. For example:
 
@@ -160,14 +209,14 @@ def sample_normalizer():
 
 - test_utils.py — for utility functions
 
-### Contributing
+## Contributing
 
 Contributions are welcome! Please open issues or pull requests for improvements or bug fixes.
 
-### License
+## License
 MIT License. See LICENSE for details.
 
-### Contact
+## Contact
 
 Daniel Tesfai d202361017@xs.ustb.edu.cn
 Project Link: https://github.com/dantesfai/tigrinya-normalizer
