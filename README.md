@@ -69,7 +69,7 @@ python cli.py -i input.txt -o output.txt -p "።፧?"
 ```
 
 ### Project Structure
-
+```
 tigrinya-normalizer/
 ├── tigrinya_normalizer/
 │   ├── __init__.py
@@ -89,7 +89,7 @@ tigrinya-normalizer/
 ├── setup.py                   # Packaging configuration
 └── README.md                  # Project documentation
 
-
+```
 
 ### Dictionaries
 
