@@ -75,7 +75,9 @@ tigrinya-normalizer/
 │   ├── __init__.py
 │   ├── normalizer.py          # Main normalization logic
 │   ├── utils.py               # Utility functions
-|   ├──dictionary_generator.py # Dictionary generator module
+|   ├──dictionary_generator.py # Core TiDictionary logic
+|   ├──cli.py                  # Command-line interface
+|   ├──cli_dictgen.py          # CLI wrapper for dictionary generation
 │   ├── dictionaries/          # Clitic/abbreviation mappings
 │   └── data/
 │       └── tigrinya_cleaned_sentences.txt
@@ -85,7 +87,6 @@ tigrinya-normalizer/
 │   ├── test_unit_normalizer.py
 │   ├── test_integration_normalizer.py
 │   └── test_utils.py
-├── cli.py                     # Command-line interface
 ├── requirements.txt           # Project dependencies
 ├── setup.py                   # Packaging configuration
 └── README.md                  # Project documentation
@@ -106,11 +107,11 @@ The normalizer uses dictionaries located in the dictionaries/ folder for:
 
 You can extend or customize these dictionaries to improve normalization accuracy.
 
-## Tigrinya Dictionary Generator
+# Tigrinya Dictionary Generator
 
 This module is part of the `tigrinya_normalizer` package and is responsible for generating normalization dictionaries from raw Tigrinya text. These dictionaries are used to normalize clitics, hyphenated words, shortened forms, and other non-standard variations.
 
-### Features
+## Features
 
 - Extracts and normalizes:
   - Clitic contractions (e.g., ተዳልዩ'ዩ → ተዳልዩ ኢዩ)
@@ -122,7 +123,7 @@ This module is part of the `tigrinya_normalizer` package and is responsible for 
 
 ---
 
-###  Manual Corrections
+## Manual Corrections
 
 After dictionary generation, the following files have undergone **manual correction** to improve accuracy:
 
@@ -138,7 +139,7 @@ These changes include:
 - Removing irrelevant or noisy entries
 - Expanding manually verified abbreviations
 
-###  Important
+##  Important
 
 Please **do not overwrite these files** without reviewing them. If you regenerate dictionaries using the CLI:
 
@@ -148,11 +149,35 @@ Please **do not overwrite these files** without reviewing them. If you regenerat
 
 ---
 
-### Installation
+## Installation
 
 ```bash
 pip install .
 ```
+## Usage (CLI)
+
+To generate the dictionaries from a Tigrinya text file:
+
+```bash
+tigrinya-dictgen -i data/raw/Tigrinya_newsarticles_dataset_v2.txt -o data/dictionary/
+```
+Output includes:
+
+- clitic_zipped_dict.txt
+
+- clitic_bind_dic.txt
+
+- clitic_dict.txt (manually corrected)
+
+- words_with_fwd_slash.txt (manually corrected)
+
+- words_with_dots.txt (manually corrected)
+
+- hyphenated_words_v1.txt
+
+- hyphenated_words_v2.txt
+
+- cliticize_improper_words.txt (manually corrected)
 
 
 ## Testing
