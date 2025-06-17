@@ -1,0 +1,2 @@
+[console_scripts]
+tigrinya-normalize = tigrinya_normalizer.cli:main

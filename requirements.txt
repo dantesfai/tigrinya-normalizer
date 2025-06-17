@@ -1,0 +1,17 @@
+# requirements.txt
+
+# Core
+regex
+numpy
+# or any other dependencies your code uses
+
+# For file loading and JSON handling
+ujson  # (optional - faster JSON loading)
+
+# Testing
+pytest
+pytest-mock
+pytest-cov
+
+# Mocking file system for I/O tests
+pyfakefs

@@ -1,0 +1,25 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Pytest cache
+.pytest_cache/
+
+# VSCode & IDE settings
+.vscode/
+.idea/
+
+# Output
+*.log
+tests/output/
+*.txt~
+
+# OS files
+.DS_Store
+Thumbs.db

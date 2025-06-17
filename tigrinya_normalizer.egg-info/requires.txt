@@ -1,0 +1,9 @@
+regex
+numpy
+ujson
+
+[dev]
+pytest
+pytest-mock
+pytest-cov
+pyfakefs
