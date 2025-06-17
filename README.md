@@ -75,6 +75,7 @@ tigrinya-normalizer/
 │   ├── __init__.py
 │   ├── normalizer.py          # Main normalization logic
 │   ├── utils.py               # Utility functions
+|   ├──dictionary_generator.py # Dictionary generator module
 │   ├── dictionaries/          # Clitic/abbreviation mappings
 │   └── data/
 │       └── tigrinya_cleaned_sentences.txt
