@@ -26,7 +26,7 @@ It applies linguistic rules, dictionary-based replacements, and cleaning steps t
 ### Install from source
 
 ```bash
-git clone https://github.com/yourusername/tigrinya-normalizer.git
+git clone https://github.com/dantesfai/tigrinya-normalizer.git
 cd tigrinya-normalizer
 pip install .
 ```
